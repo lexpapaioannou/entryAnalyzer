@@ -20,21 +20,22 @@ public class EntryAnalyzer {
 
 	void start() {
 		//TODO
-		EntryAnalyzer.validatePath();
+		boolean test = validatePath();
 	}
 
 	//Step 1
 	boolean validatePath() { //Checks if the file name is valid and then converts it into an element (string or array?)
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please enter the file name:+\n");
+		System.out.println("Please enter the file name:\n");
 			
 		while (true) {
-			File fileName = new File("~/Documents/Programs/EntryAnalyzer"+scanner.next());//This current path is just for testing
+			File fileName = new File("/Users/Lex/Documents/Programs/EntryAnalyzer/"+scanner.next());//This current path is just for testing
+			System.out.println(fileName);//debug
 			if (fileName.exists() && !fileName.isDirectory()) {  //if the file doesn't exist, print error and make user enter new file
-				continue;
+				break;
 			} else {
 				System.out.println("ERROR: File does not exist.  Please enter a new filename.");
-				break;
+				continue;
 			}
 		}
 		
