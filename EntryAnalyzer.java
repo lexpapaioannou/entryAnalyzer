@@ -21,6 +21,9 @@ public class EntryAnalyzer {
 	void start() {
 		//TODO
 		boolean test = validatePath();
+		while (test == true) {
+			loadFile();//Maybe make validatePath() a File function, which is loaded into loadFile (to convert it to a string)
+		}
 	}
 
 	//Step 1
@@ -40,5 +43,12 @@ public class EntryAnalyzer {
 		}
 		
 		return true;
+	}
+
+	//Step 2
+	String loadFile() {
+		String entry = "";
+
+		return entry;
 	}
 }
