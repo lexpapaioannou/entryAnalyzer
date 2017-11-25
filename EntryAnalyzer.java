@@ -8,7 +8,7 @@ import java.io.File;//Step 1 & 2
 
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
-		2) Convert file into String array or other elemtn
+		2) Convert file into String array or other elements
 			?3) Split String by punctuation marks & spaces
 		4) Count each time a word is used
 			?5) remove common grammatical words such as 'the' and 'a', for example
@@ -28,7 +28,7 @@ public class EntryAnalyzer {
 		loadFile(test);//Maybe make validatePath() a File function, which is loaded into loadFile (to convert it to a string)
 	
 		//debug
-		System.out.println(test);
+		//System.out.println(test);
 		System.out.println("If you've reached this line this program has run succesfully");
 	}
 
@@ -39,7 +39,7 @@ public class EntryAnalyzer {
 			
 		while (true) {
 			File fileName = new File("/Users/Lex/Documents/Programs/EntryAnalyzer/"+scanner.next());//This current path is just for testing
-			System.out.println(fileName);//debug
+			//System.out.println(fileName);//debug
 			if (fileName.exists() && !fileName.isDirectory()) {
 				//break;
 				return fileName;
@@ -53,23 +53,21 @@ public class EntryAnalyzer {
 	}
 
 	//Step 2
-	String loadFile(File file) {
+	String[] loadFile(File file) {
 		//String entry = FileUtils.readFileToString(file);;
-		String entry = "This is a sample string.";//Testing
+		String entry = "This! is a 'sample' string; with (many) punctuation, marks.";//debug
 		
 		//Step 3
-		char[] punctuation = {',', '.', ':', ';', '(', ')', '\"', '\'', '!', '?'};
-		for (int i = 0; i < entry.length(); i++) {
-			for (int j = 0; j <punctuation.length; j++) {
-				if (entry.charAt(i) == punctuation[j]) {
-					System.out.println(j+" at "+i);
-				}
-			}
+		String[] punctuation = {",", ".", ":", ";", "(", ")", "\"", "\'", "!", "?"};
+		for (int j = 0; j <punctuation.length; j++) {
+			String a = punctuation[j];
+			entry = entry.replace(punctuation[j],"");
 		}
+		System.out.println(entry);//debug
 		
 		String[] strArray = entry.split(" ");
 
-		return entry;
+		return strArray;
 	}
 
 	
