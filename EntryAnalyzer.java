@@ -1,7 +1,7 @@
 import java.io.Reader;//I forgot
 import java.util.Scanner;//Step 1
 import java.io.File;//Step 1 & 2
-import org.apache.commons.io.FileUtils;//Step 2
+//import org.apache.commons.io.FileUtils;//Step 2 (TODO)
 
 
 	//This code requires the use of Apache Libraries.
@@ -53,10 +53,23 @@ public class EntryAnalyzer {
 	}
 
 	//Step 2
-	String loadFile(File foo) {
-		String entry = FileUtils.readFileToString(foo);
+	String loadFile(File file) {
+		//String entry = FileUtils.readFileToString(file);;
+		String entry = "This is a sample string.";//Testing
 		
+		//Step 3
+		String[] punctiation = [',', '.', ':', ';', '(', ')', '\"', '\'', '!', '?']
+		String[] strArray = entry.split(" ");
+		for (int i = 0; i <= strArray.length(); i++) {
+			for (int f = 0;, f <= punctuation.length(); f++) {
+				if (entry[i] == punctuation[f]) {
+					
+				} 
+			}
+		}
 
 		return entry;
 	}
+
+	
 }
