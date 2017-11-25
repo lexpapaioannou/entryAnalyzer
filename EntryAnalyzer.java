@@ -1,6 +1,10 @@
-import java.io.Reader;
-import java.util.Scanner;
-import java.io.File;
+import java.io.Reader;//I forgot
+import java.util.Scanner;//Step 1
+import java.io.File;//Step 1 & 2
+import org.apache.commons.io.FileUtils;//Step 2
+
+
+	//This code requires the use of Apache Libraries.
 
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
@@ -21,7 +25,7 @@ public class EntryAnalyzer {
 	void start() {
 		//TODO
 		File test = validatePath();	
-		loadFile();//Maybe make validatePath() a File function, which is loaded into loadFile (to convert it to a string)
+		loadFile(test);//Maybe make validatePath() a File function, which is loaded into loadFile (to convert it to a string)
 
 		//debug
 		System.out.println(test);
@@ -49,8 +53,8 @@ public class EntryAnalyzer {
 	}
 
 	//Step 2
-	String loadFile() {
-		String entry = "";
+	String loadFile(File foo) {
+		String entry = FileUtils.readFileToString(foo);
 		
 
 		return entry;
