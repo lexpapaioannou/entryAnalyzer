@@ -26,7 +26,7 @@ public class EntryAnalyzer {
 		//TODO
 		File test = validatePath();	
 		loadFile(test);//Maybe make validatePath() a File function, which is loaded into loadFile (to convert it to a string)
-
+	
 		//debug
 		System.out.println(test);
 		System.out.println("If you've reached this line this program has run succesfully");
@@ -58,15 +58,16 @@ public class EntryAnalyzer {
 		String entry = "This is a sample string.";//Testing
 		
 		//Step 3
-		String[] punctiation = [',', '.', ':', ';', '(', ')', '\"', '\'', '!', '?']
-		String[] strArray = entry.split(" ");
-		for (int i = 0; i <= strArray.length(); i++) {
-			for (int f = 0;, f <= punctuation.length(); f++) {
-				if (entry[i] == punctuation[f]) {
-					
-				} 
+		char[] punctuation = {',', '.', ':', ';', '(', ')', '\"', '\'', '!', '?'};
+		for (int i = 0; i < entry.length(); i++) {
+			for (int j = 0; j <punctuation.length; j++) {
+				if (entry.charAt(i) == punctuation[j]) {
+					System.out.println(j+" at "+i);
+				}
 			}
 		}
+		
+		String[] strArray = entry.split(" ");
 
 		return entry;
 	}
