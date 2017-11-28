@@ -58,9 +58,11 @@ public class EntryAnalyzer {
 	//Step 2
 	String[] loadFile(File file) {
 		List<String> entry = new ArrayList<String>();
-			
-		while (file.hasNextLine()) {
-			entry.add(file.nextLine());
+		Scanner sc = new Scanner(file);
+
+	
+		while (sc.hasNextLine()) {
+			entry.add(sc.nextLine());
 		}
 
 		//Step 3
