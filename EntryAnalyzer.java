@@ -61,12 +61,15 @@ public class EntryAnalyzer {
 		Scanner sc = new Scanner(file);
 		
 		String[] punctuation = {",", ".", ":", ";", "(", ")", "\"", "\'", "!", "?"};//NOTE remember to add more marks later
-	
+		
 		while (sc.hasNextLine()) {
 			list.add(sc.nextLine());
 		}
+		System.out.println("STEP 1 "+list);//NOTE: Right now, this makes a list of 1 element.  To do: find a way to split that into several elements.
 
 		String[] entry = list.toArray(new String[0]);
+		System.out.println("STEP 2 "+entry);
+		System.out.println("STEP 2+ "+entry[0]);
 
 		//Step 3
 		for (int i = 0; i <entry.length; i++) {
@@ -75,7 +78,7 @@ public class EntryAnalyzer {
 				entry[i] = entry[i].replace(punctuation[j],"");
 			}
 		}
-		System.out.println(entry);//debug
+		System.out.println("END OF loadFile(File file) "+entry[0]);//debug
 
 		//String[] strArray = entry.split(" ");
 
