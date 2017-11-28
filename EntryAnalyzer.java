@@ -17,12 +17,12 @@ import java.util.ArrayList;//Step 2
 	*/
 
 public class EntryAnalyzer {
-	public static void main(String [] args) {
+	public static void main(String [] args) throws FileNotFoundException {
 		EntryAnalyzer entryAnalyzer = new EntryAnalyzer();
 		entryAnalyzer.start();
 	}
 
-	void start() {
+	void start() throws FileNotFoundException {
 		//TODO
 
 		File prompt = validatePath();	
@@ -56,25 +56,32 @@ public class EntryAnalyzer {
 	}
 
 	//Step 2
-	String[] loadFile(File file) {
-		List<String> entry = new ArrayList<String>();
+	String[] loadFile(File file) throws FileNotFoundException {
+		List<String> list = new ArrayList<String>();
 		Scanner sc = new Scanner(file);
-
+		
+		String[] punctuation = {",", ".", ":", ";", "(", ")", "\"", "\'", "!", "?"};//NOTE remember to add more marks later
 	
 		while (sc.hasNextLine()) {
-			entry.add(sc.nextLine());
+			list.add(sc.nextLine());
 		}
+
+		String[] entry = list.toArray(new String[0]);
 
 		//Step 3
-		String[] punctuation = {",", ".", ":", ";", "(", ")", "\"", "\'", "!", "?"};//NOTE remember to add more marks later
-		for (int j = 0; j <punctuation.length; j++) {
-			String a = punctuation[j];
-			entry = entry.replace(punctuation[j],"");
+		for (int i = 0; i <entry.length; i++) {
+			for (int j = 0; j <punctuation.length; j++) {
+				String a = punctuation[j];
+				entry[i] = entry[i].replace(punctuation[j],"");
+			}
 		}
-		
-		String[] strArray = entry.split(" ");
+		System.out.println(entry);//debug
 
-		return strArray;
+		//String[] strArray = entry.split(" ");
+
+
+		
+		return entry;
 	}
 
 	//Step 4
