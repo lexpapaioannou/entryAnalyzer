@@ -3,6 +3,7 @@ import java.util.Scanner;//Step 1
 import java.io.File;//Step 1 & 2
 import java.util.List;//Step 2
 import java.util.ArrayList;//Step 2
+import java.lang.reflect.*;//Debugging
 
 	//This code requires the use of Apache Libraries.
 
@@ -59,7 +60,6 @@ public class EntryAnalyzer {
 	String[] loadFile(File file) throws FileNotFoundException {
 		List<String> list = new ArrayList<String>();
 		Scanner sc = new Scanner(file);
-		
 		String[] punctuation = {",", ".", ":", ";", "(", ")", "\"", "\'", "!", "?"};//NOTE remember to add more marks later
 		
 		while (sc.hasNextLine()) {
@@ -68,23 +68,26 @@ public class EntryAnalyzer {
 		System.out.println("STEP 1 "+list);//NOTE: Right now, this makes a list of 1 element.  To do: find a way to split that into several elements.
 
 		String[] entry = list.toArray(new String[0]);
-		System.out.println("STEP 2 "+entry);
-		System.out.println("STEP 2+ "+entry[0]);
+		
+		String[] splitEntry = entry[0].split(" ");
+		
+		
+		System.out.println("STEP 2 "+splitEntry);
+		System.out.println("STEP 2+ "+splitEntry[0]);
 
 		//Step 3
-		for (int i = 0; i <entry.length; i++) {
+		for (int i = 0; i <splitEntry.length; i++) {
 			for (int j = 0; j <punctuation.length; j++) {
-				String a = punctuation[j];
-				entry[i] = entry[i].replace(punctuation[j],"");
+				splitEntry[i] = splitEntry[i].replace(punctuation[j],"");
 			}
 		}
-		System.out.println("END OF loadFile(File file) "+entry[0]);//debug
+		System.out.println("END OF loadFile(File file) "+splitEntry[0]);//debug
 
 		//String[] strArray = entry.split(" ");
 
 
 		
-		return entry;
+		return splitEntry;
 	}
 
 	//Step 4
