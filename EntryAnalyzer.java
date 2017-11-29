@@ -3,7 +3,6 @@ import java.util.Scanner;//Step 1
 import java.io.File;//Step 1 & 2
 import java.util.List;//Step 2
 import java.util.ArrayList;//Step 2
-import java.lang.reflect.*;//Debugging
 
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
@@ -36,7 +35,7 @@ public class EntryAnalyzer {
 		System.out.println("Please enter the file name:\n");
 		
 		while (true) {
-			File fileName = new File(scanner.next());
+			File fileName = new File(scanner.nextLine());
 
 			if (fileName.exists() && !fileName.isDirectory()) {
 				return fileName;
