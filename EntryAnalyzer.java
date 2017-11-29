@@ -5,8 +5,6 @@ import java.util.List;//Step 2
 import java.util.ArrayList;//Step 2
 import java.lang.reflect.*;//Debugging
 
-	//This code requires the use of Apache Libraries.
-
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
 		2) Convert file into String array or other elements
@@ -38,10 +36,9 @@ public class EntryAnalyzer {
 		System.out.println("Please enter the file name:\n");
 		
 		while (true) {
-			File fileName = new File("/Users/Lex/Documents/Programs/EntryAnalyzer/"+scanner.next());//This current path is just for testing
+			File fileName = new File(scanner.next());
 
 			if (fileName.exists() && !fileName.isDirectory()) {
-				//break;
 				return fileName;
 				} else {
 				System.out.println("ERROR: File does not exist.  Please enter a new filename.");
@@ -59,8 +56,6 @@ public class EntryAnalyzer {
 			list.add(sc.nextLine());
 		}
 
-		//String[] entry = list.toArray(new String[0]);		
-		//String[] splitEntry = entry[0].split(" ");
 		String[] splitEntry = list.toArray(new String[0])[0].split(" ");//I can't believe this line worked
 
 		//Step 3
