@@ -30,7 +30,6 @@ public class EntryAnalyzer {
 		//debug
 		System.out.println(prompt);	
 		System.out.println("If you've reached this line this program has run succesfully");
-
 	}
 
 	//Step 1
@@ -48,9 +47,6 @@ public class EntryAnalyzer {
 				System.out.println("ERROR: File does not exist.  Please enter a new filename.");
 			}
 		}
-
-		//return fileName;
-		
 	}
 
 	//Step 2
@@ -63,9 +59,10 @@ public class EntryAnalyzer {
 			list.add(sc.nextLine());
 		}
 
-		String[] entry = list.toArray(new String[0]);		
-		String[] splitEntry = entry[0].split(" ");
-		
+		//String[] entry = list.toArray(new String[0]);		
+		//String[] splitEntry = entry[0].split(" ");
+		String[] splitEntry = list.toArray(new String[0])[0].split(" ");//I can't believe this line worked
+
 		//Step 3
 		for (int i = 0; i <splitEntry.length; i++) {
 			for (int j = 0; j <punctuation.length; j++) {
@@ -77,7 +74,8 @@ public class EntryAnalyzer {
 	}
 
 	//Step 4
-	
-
+	int hitCount(String[] array) {
+		return 0;
+	}
 	
 }
