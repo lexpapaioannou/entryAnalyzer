@@ -24,8 +24,6 @@ public class EntryAnalyzer {
 	}
 
 	void start() throws FileNotFoundException {
-		//TODO
-
 		File prompt = validatePath();	
 		String[] promptArray = loadFile(prompt);
 			
