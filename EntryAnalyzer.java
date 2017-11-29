@@ -43,7 +43,6 @@ public class EntryAnalyzer {
 		while (true) {
 			File fileName = new File("/Users/Lex/Documents/Programs/EntryAnalyzer/"+scanner.next());//This current path is just for testing
 
-			//System.out.println(fileName);//debug
 			if (fileName.exists() && !fileName.isDirectory()) {
 				//break;
 				return fileName;
@@ -65,27 +64,16 @@ public class EntryAnalyzer {
 		while (sc.hasNextLine()) {
 			list.add(sc.nextLine());
 		}
-		System.out.println("STEP 1 "+list);//NOTE: Right now, this makes a list of 1 element.  To do: find a way to split that into several elements.
 
-		String[] entry = list.toArray(new String[0]);
-		
+		String[] entry = list.toArray(new String[0]);		
 		String[] splitEntry = entry[0].split(" ");
 		
-		
-		System.out.println("STEP 2 "+splitEntry);
-		System.out.println("STEP 2+ "+splitEntry[0]);
-
 		//Step 3
 		for (int i = 0; i <splitEntry.length; i++) {
 			for (int j = 0; j <punctuation.length; j++) {
 				splitEntry[i] = splitEntry[i].replace(punctuation[j],"");
 			}
 		}
-		System.out.println("END OF loadFile(File file) "+splitEntry[0]);//debug
-
-		//String[] strArray = entry.split(" ");
-
-
 		
 		return splitEntry;
 	}
