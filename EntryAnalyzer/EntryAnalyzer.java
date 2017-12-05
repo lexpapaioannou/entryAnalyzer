@@ -58,7 +58,7 @@ public class EntryAnalyzer {
 			list.add(sc.nextLine());
 		}
 
-		String[] splitEntry = list.toArray(new String[0])[0].split(" ");//I can't believe this line worked
+		String[] splitEntry = list.toArray(new String[0])[0].toLowerCase().split(" ");//I can't believe this line worked
 
 		//Step 3
 		for (int i = 0; i <splitEntry.length; i++) {
