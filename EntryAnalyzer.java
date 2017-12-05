@@ -1,3 +1,5 @@
+package EntryAnalyzer;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;//Step 1
 import java.io.File;//Step 1 & 2
@@ -69,6 +71,10 @@ public class EntryAnalyzer {
 
 	//Step 4
 	int hitCount(String[] array) {
+		for (int i = 0; i <array.length; i++) {
+			
+		}
+	
 		return 0;
 	}
 	
