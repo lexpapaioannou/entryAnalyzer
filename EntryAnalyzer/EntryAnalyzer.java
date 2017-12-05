@@ -26,7 +26,8 @@ public class EntryAnalyzer {
 	void start() throws FileNotFoundException {
 		File prompt = validatePath();	
 		String[] promptArray = loadFile(prompt);
-			
+		table[] results = hitCount(promptArray);
+	
 		//debug
 		System.out.println(promptArray[0]);	
 		System.out.println("If you've reached this line this program has run succesfully");
@@ -58,25 +59,28 @@ public class EntryAnalyzer {
 			list.add(sc.nextLine());
 		}
 
-		String[] splitEntry = list.toArray(new String[0])[0].toLowerCase().split(" ");//I can't believe this line worked
-
 		//Step 3
-		for (int i = 0; i <splitEntry.length; i++) {
-			for (int j = 0; j <punctuation.length; j++) {
-				splitEntry[i] = splitEntry[i].replace(punctuation[j],"");
-			}
-		}
-		
+		String[] splitEntry = list.toArray(new String[0])[0].replaceAll("[^a-zA-Z ]", "").toLowerCase().split(" ");//I can't believe this line worked
+
 		return splitEntry;
 	}
 
 	//Step 4
-	int hitCount(String[] array) {
-		for (int i = 0; i <array.lenght; i++) {
-				
+	table[] hitCount(String[] array) {
+		int i = 0;
+		System.out.println(array[47]);
+		for (int k = 0; k<array.length; k++) {
+			for (int j = 0; j<array.length; j++) {
+				if (array[k] != array[j]) {
+					i++;
+				}
+			}
 		}
+		System.out.println(i); //debug
 
-		return 0;
+		table[] hitCounter = new table[i];
+
+		return hitCounter;
 	}
 	
 }
