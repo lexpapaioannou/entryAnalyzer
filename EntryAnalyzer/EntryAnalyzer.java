@@ -53,7 +53,6 @@ public class EntryAnalyzer {
 	String[] loadFile(File file) throws FileNotFoundException {
 		List<String> list = new ArrayList<String>();
 		Scanner sc = new Scanner(file);
-		String[] punctuation = {",", ".", ":", ";", "(", ")", "\"", "\'", "!", "?"};//NOTE remember to add more marks later
 		
 		while (sc.hasNextLine()) {
 			list.add(sc.nextLine());
@@ -69,15 +68,31 @@ public class EntryAnalyzer {
 	table[] hitCount(String[] array) {
 		int i = 0;
 		ArrayList<String> diffNum = new ArrayList<>();
+		ArrayList<Integer> hits = new ArrayList<>();
 
 		for (int j = 0; j <array.length; j++) {
 			if(!diffNum.contains(array[j])) {
 				diffNum.add(array[j]);
+				hits.add(1);
+			} else {
+				for (int f = 0; f<diffNum.size(); f++) {
+					String a, b;
+					a = diffNum.get(f).toString();
+					b = array[j].toString();
+					
+					System.out.println(a+"|"+b);
+					if (a==b) {
+						System.out.println("TEST");
+						int k = hits.get(f);
+						hits.set(f, k + 1);
+					}
+				}
 			}
 		}
 		
+		System.out.println(diffNum);
+		System.out.println(hits);
 		i = diffNum.size();
-		System.out.println(i);//debug
 
 		table[] hitCounter = new table[i];
 
