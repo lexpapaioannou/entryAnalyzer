@@ -72,7 +72,10 @@ public class EntryAnalyzer {
 
 	//Step 4
 	int hitCount(String[] array) {
-		
+		for (int i = 0; i <array.lenght; i++) {
+				
+		}
+
 		return 0;
 	}
 	
