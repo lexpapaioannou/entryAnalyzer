@@ -68,15 +68,16 @@ public class EntryAnalyzer {
 	//Step 4
 	table[] hitCount(String[] array) {
 		int i = 0;
-		System.out.println(array[47]);
-		for (int k = 0; k<array.length; k++) {
-			for (int j = 0; j<array.length; j++) {
-				if (array[k] != array[j]) {
-					i++;
-				}
+		ArrayList<String> diffNum = new ArrayList<>();
+
+		for (int j = 0; j <array.length; j++) {
+			if(!diffNum.contains(array[j])) {
+				diffNum.add(array[j]);
 			}
 		}
-		System.out.println(i); //debug
+		
+		i = diffNum.size();
+		System.out.println(i);//debug
 
 		table[] hitCounter = new table[i];
 
