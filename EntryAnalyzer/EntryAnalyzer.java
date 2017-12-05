@@ -76,13 +76,7 @@ public class EntryAnalyzer {
 				hits.add(1);
 			} else {
 				for (int f = 0; f<diffNum.size(); f++) {
-					String a, b;
-					a = diffNum.get(f).toString();
-					b = array[j].toString();
-					
-					System.out.println(a+"|"+b);
-					if (a==b) {
-						System.out.println("TEST");
+					if (diffNum.get(f).equals(array[j])) {
 						int k = hits.get(f);
 						hits.set(f, k + 1);
 					}
