@@ -1,15 +1,15 @@
 package EntryAnalyzer;
 
-import java.io.FileNotFoundException;
-import java.util.Scanner;//Step 1
+import java.io.FileNotFoundException;//Step 1
+import java.io.IOException;//Step 6
 import java.io.File;//Step 1 & 2
+import java.io.PrintWriter;//Step 6
 import java.util.List;//Step 2
+import java.util.Scanner;//Step 1
 import java.util.ArrayList;//Step 2
-import EntryAnalyzer.table;//Step 4
 import java.util.Collections;//Step 5
 import java.util.Arrays;//Step 5
-import java.io.PrintWriter;//Step 6
-import java.io.IOException;//Step 6
+import EntryAnalyzer.table;//Step 4
 
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
@@ -31,9 +31,9 @@ public class EntryAnalyzer {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please enter the file name:");
 		String name = scan.nextLine();
-		File prompt = validatePath(name);	
-		String[] promptArray = loadFile(prompt);
-		table[] results = hitCount(promptArray);
+		//File prompt = validatePath(name);	
+		//String[] promptArray = loadFile(prompt);
+		table[] results = hitCount(loadFile(validatePath(name)));
 		output(results, name);		
 
 		//Step 7
@@ -125,10 +125,7 @@ public class EntryAnalyzer {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i <data.length; i++) {
-			sb.append(data[i].getLabel()+",");
-			sb.append("\n");
-			sb.append(data[i].getHits()+",");
-			sb.append("\n");
+			sb.append(data[i].getLabel()+","+data[i].getHits()+",\n");
 		}
 		writer.write(sb.toString());
 		writer.close();
