@@ -31,8 +31,6 @@ public class EntryAnalyzer {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please enter the file name:");
 		String name = scan.nextLine();
-		//File prompt = validatePath(name);	
-		//String[] promptArray = loadFile(prompt);
 		table[] results = hitCount(loadFile(validatePath(name)));
 		output(results, name);		
 
