@@ -8,41 +8,46 @@ import java.util.ArrayList;//Step 2
 import EntryAnalyzer.table;//Step 4
 import java.util.Collections;//Step 5
 import java.util.Arrays;//Step 5
+import java.io.PrintWriter;//Step 6
+import java.io.IOException;//Step 6
 
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
 		2) Convert file into String array or other elements
 		3) Split String by punctuation marks & spaces
 		4) Count each time a word is used
-			?5) remove common grammatical words such as 'the' and 'a', for example
-			?6) Save data & output it as a .csv
+		5) remove common grammatical words such as 'the' and 'a', for example
+		6) Save data & output it as a .csv
 		7) Print results
 	*/
 
 public class EntryAnalyzer {
-	public static void main(String [] args) throws FileNotFoundException {
+	public static void main(String [] args) throws FileNotFoundException, IOException{
 		EntryAnalyzer entryAnalyzer = new EntryAnalyzer();
 		entryAnalyzer.start();
 	}
 
-	void start() throws FileNotFoundException {
-		File prompt = validatePath();	
+	void start() throws FileNotFoundException, IOException{
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Please enter the file name:");
+		String name = scan.nextLine();
+		File prompt = validatePath(name);	
 		String[] promptArray = loadFile(prompt);
 		table[] results = hitCount(promptArray);
-	
-		//debug
-		System.out.println(results[0].getLabel());	
-		System.out.println(results[1].getLabel());
-		System.out.println("If you've reached this line this program has run succesfully");
+		output(results, name);		
+
+		//Step 7
+		for (int i = 0; i < results.length; i++){
+			System.out.println(results[i].getLabel());	
+			System.out.println(results[i].getHits());
+			System.out.println("\n");
+		}
 	}
 
 	//Step 1
-	File validatePath() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please enter the file name:\n");
-		
+	File validatePath(String scanner) {
 		while (true) {
-			File fileName = new File(scanner.nextLine());
+			File fileName = new File(scanner);
 
 			if (fileName.exists() && !fileName.isDirectory()) {
 				return fileName;
@@ -72,7 +77,7 @@ public class EntryAnalyzer {
 		int i = 0;
 		ArrayList<String> diffNum = new ArrayList<>();
 		ArrayList<Integer> hits = new ArrayList<>();
-		String[] commonWords = {"is", "this", "a", "the", "or", "as", "of", "to", "and", "for"};
+		String[] commonWords = {"", "is", "this", "a", "the", "or", "as", "of", "to", "and", "for"};
 
 		for (int j = 0; j <array.length; j++) {
 			if(!diffNum.contains(array[j])) {
@@ -111,6 +116,22 @@ public class EntryAnalyzer {
 		}
 
 		return hitCounter;
+	}
+
+	//Step 6
+	public void output(table[] data, String fileName) throws java.io.IOException {
+		fileName = fileName.replace(".txt","");
+		PrintWriter writer = new PrintWriter(new File(fileName+"WordCount.csv"));
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i <data.length; i++) {
+			sb.append(data[i].getLabel()+",");
+			sb.append("\n");
+			sb.append(data[i].getHits()+",");
+			sb.append("\n");
+		}
+		writer.write(sb.toString());
+		writer.close();
 	}
 	
 }
