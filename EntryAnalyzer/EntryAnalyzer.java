@@ -29,7 +29,7 @@ public class EntryAnalyzer {
 		table[] results = hitCount(promptArray);
 	
 		//debug
-		System.out.println(promptArray[0]);	
+		System.out.println(results[0].getLabel());	
 		System.out.println("If you've reached this line this program has run succesfully");
 	}
 
@@ -84,11 +84,17 @@ public class EntryAnalyzer {
 			}
 		}
 		
-		System.out.println(diffNum);
-		System.out.println(hits);
 		i = diffNum.size();
 
 		table[] hitCounter = new table[i];
+		for (int k = 0; k <hitCounter.length; k++) {
+			hitCounter[k] = new table();
+		}
+		
+		for (int k = 0; k <i; k++) {
+			hitCounter[k].setLabel(diffNum.get(k));
+			hitCounter[k].setHits(hits.get(k));
+		}
 
 		return hitCounter;
 	}

@@ -3,6 +3,11 @@ package EntryAnalyzer;
 public class table {
 	String label;
 	int hits;
+	
+	public table () {
+		label = " ";
+		hits = 0;
+	}	
 
 	public table (String label, int hits) {
 		this.label = label;
@@ -17,11 +22,11 @@ public class table {
 		return hits;
 	}
 
-	public void setLabel() {
+	public void setLabel(String label) {
 		this.label = label;
 	}
 
-	public void setHits() {
+	public void setHits(int hits) {
 		this.hits = hits;
 	}
 
