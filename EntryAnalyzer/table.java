@@ -30,4 +30,9 @@ public class table {
 		this.hits = hits;
 	}
 
+	public void removeEntry(String label) {
+		this.label = "";
+		this.hits = -1;
+	}
+
 }

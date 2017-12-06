@@ -6,6 +6,8 @@ import java.io.File;//Step 1 & 2
 import java.util.List;//Step 2
 import java.util.ArrayList;//Step 2
 import EntryAnalyzer.table;//Step 4
+import java.util.Collections;//Step 5
+import java.util.Arrays;//Step 5
 
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
@@ -30,6 +32,7 @@ public class EntryAnalyzer {
 	
 		//debug
 		System.out.println(results[0].getLabel());	
+		System.out.println(results[1].getLabel());
 		System.out.println("If you've reached this line this program has run succesfully");
 	}
 
@@ -69,6 +72,7 @@ public class EntryAnalyzer {
 		int i = 0;
 		ArrayList<String> diffNum = new ArrayList<>();
 		ArrayList<Integer> hits = new ArrayList<>();
+		String[] commonWords = {"is", "this", "a", "the", "or", "as", "of", "to", "and", "for"};
 
 		for (int j = 0; j <array.length; j++) {
 			if(!diffNum.contains(array[j])) {
@@ -94,6 +98,16 @@ public class EntryAnalyzer {
 		for (int k = 0; k <i; k++) {
 			hitCounter[k].setLabel(diffNum.get(k));
 			hitCounter[k].setHits(hits.get(k));
+		}
+
+		//Step 5
+		for (int k = 0; k <hitCounter.length; k++) {
+			for (int j = 0; j <commonWords.length; j++) {
+				if (hitCounter[k].getLabel().equals(commonWords[j])) {
+					//Collections.rotate(hitCounter[k], -1);
+					hitCounter[k].removeEntry(hitCounter[k].getLabel());
+				}
+			}
 		}
 
 		return hitCounter;
