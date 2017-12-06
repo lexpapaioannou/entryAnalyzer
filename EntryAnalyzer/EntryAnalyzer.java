@@ -92,8 +92,8 @@ public class EntryAnalyzer {
 		}
 		
 		i = diffNum.size();
-
 		table[] hitCounter = new table[i];
+
 		for (int k = 0; k <hitCounter.length; k++) {
 			hitCounter[k] = new table();
 		}
@@ -125,6 +125,7 @@ public class EntryAnalyzer {
 		for (int i = 0; i <data.length; i++) {
 			sb.append(data[i].getLabel()+","+data[i].getHits()+",\n");
 		}
+
 		writer.write(sb.toString());
 		writer.close();
 	}
