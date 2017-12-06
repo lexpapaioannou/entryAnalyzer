@@ -9,6 +9,7 @@ import java.util.Scanner;//Step 1
 import java.util.ArrayList;//Step 2
 import java.util.Collections;//Step 5
 import java.util.Arrays;//Step 5
+import java.lang.Character;//Step 7
 import EntryAnalyzer.table;//Step 4
 
 	/*PSEUDO CODE:
@@ -35,10 +36,22 @@ public class EntryAnalyzer {
 		output(results, name);		
 
 		//Step 7
-		for (int i = 0; i < results.length; i++){
-			System.out.println(results[i].getLabel());	
-			System.out.println(results[i].getHits());
-			System.out.println("\n");
+		while (true) {
+			//Scanner scan = new Scanner(System.in);
+			System.out.println("Do you want to print your results?  (y/n)");
+			char p = scan.next().charAt(0);
+			p = Character.toLowerCase(p);
+			if (p == 'y') {
+				for (int i = 0; i < results.length; i++){
+					System.out.println(results[i].getLabel());	
+					System.out.println(results[i].getHits());
+					System.out.println("\n");
+				}
+			} else if (p != 'n') {
+				System.out.println("Please try again.");
+				continue;
+			}
+			System.exit(0);
 		}
 	}
 
