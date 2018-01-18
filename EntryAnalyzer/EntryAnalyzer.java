@@ -7,10 +7,16 @@ import java.io.PrintWriter;//Step 6
 import java.util.List;//Step 2
 import java.util.Scanner;//Step 1
 import java.util.ArrayList;//Step 2
-import java.util.Collections;//Step 5
+//import java.util.Collections;//Step 5
 import java.util.Arrays;//Step 5
 import java.lang.Character;//Step 7
 import EntryAnalyzer.table;//Step 4
+
+	/*Known bugs:
+		*Hyphenated words are counted as one (i.e. "two-faced")
+		*Entries with multiple paragraphs are ignored with exception to the first paragraph
+			This is probably a bug in Step 2, within the while loop
+	*/
 
 	/*PSEUDO CODE:
 		1) Check if the file path exists, otherwise ask again
@@ -24,8 +30,7 @@ import EntryAnalyzer.table;//Step 4
 
 public class EntryAnalyzer {
 	public static void main(String [] args) throws FileNotFoundException, IOException{
-		EntryAnalyzer entryAnalyzer = new EntryAnalyzer();
-		entryAnalyzer.start();
+		(new EntryAnalyzer()).start();
 	}
 
 	void start() throws FileNotFoundException, IOException{
@@ -37,7 +42,6 @@ public class EntryAnalyzer {
 
 		//Step 7
 		while (true) {
-			//Scanner scan = new Scanner(System.in);
 			System.out.println("Do you want to print your results?  (y/n)");
 			char p = scan.next().charAt(0);
 			p = Character.toLowerCase(p);
@@ -130,7 +134,7 @@ public class EntryAnalyzer {
 	}
 
 	//Step 6
-	public void output(table[] data, String fileName) throws java.io.IOException {
+	public void output(table[] data, String fileName) throws IOException {
 		fileName = fileName.replace(".txt","");
 		PrintWriter writer = new PrintWriter(new File(fileName+"WordCount.csv"));
 		StringBuilder sb = new StringBuilder();
