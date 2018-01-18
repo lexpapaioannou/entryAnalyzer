@@ -13,7 +13,6 @@ import java.lang.Character;//Step 7
 import EntryAnalyzer.table;//Step 4
 
 	/*Known bugs:
-		*Hyphenated words are counted as one (i.e. "two-faced")
 		*Entries with multiple paragraphs are ignored with exception to the first paragraph
 			This is probably a bug in Step 2, within the while loop
 	*/
@@ -36,12 +35,16 @@ public class EntryAnalyzer {
 	void start() throws FileNotFoundException, IOException{
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please enter the file name:");
-		String name = scan.nextLine();
-		table[] results = hitCount(loadFile(validatePath(name)));
-		output(results, name);		
+		while(true) {
+			File name = new File(scan.nextLine());
+			if(!validatePath(name)) {
+				System.out.println("ERROR: File not found.  Please try again.");
+				continue;
+			}
+			table[] results = hitCount(loadFile(name));
+			output(results, name.toString());		
 
-		//Step 7
-		while (true) {
+			//Step 7
 			System.out.println("Do you want to print your results?  (y/n)");
 			char p = scan.next().charAt(0);
 			p = Character.toLowerCase(p);
@@ -60,16 +63,11 @@ public class EntryAnalyzer {
 	}
 
 	//Step 1
-	File validatePath(String scanner) {
-		while (true) {
-			File fileName = new File(scanner);
-
-			if (fileName.exists() && !fileName.isDirectory()) {
-				return fileName;
-				} else {
-				System.out.println("ERROR: File does not exist.  Please enter a new filename.");
-			}
+	boolean validatePath(File fileName) {
+		if (fileName.exists() && !fileName.isDirectory()) {
+			return true;
 		}
+		return false;
 	}
 
 	//Step 2
@@ -77,12 +75,14 @@ public class EntryAnalyzer {
 		List<String> list = new ArrayList<String>();
 		Scanner sc = new Scanner(file);
 		
-		while (sc.hasNextLine()) {
+		if (sc.hasNextLine()) {
 			list.add(sc.nextLine());
+		} else if (!sc.hasNextLine()) {
+			System.out.println("MISS");
 		}
-
+		
 		//Step 3
-		String[] splitEntry = list.toArray(new String[0])[0].replaceAll("[^a-zA-Z ]", "").toLowerCase().split(" ");//I can't believe this line worked
+		String[] splitEntry = list.toArray(new String[0])[0].replaceAll("-" ," ").replaceAll("[^a-zA-Z ]", "").toLowerCase().split(" ");//I can't believe this line worked
 
 		return splitEntry;
 	}
